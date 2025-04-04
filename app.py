@@ -116,4 +116,4 @@ def main():
         st.write("View the robots.txt at: [Robots.txt](/robots.txt)")
 
 if __name__ == "__main__":
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    main()
