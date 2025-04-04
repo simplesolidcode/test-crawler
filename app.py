@@ -4,6 +4,8 @@ from datetime import datetime
 
 app = FastAPI()
 
+HOST = "http://20.199.24.227"
+
 # Project settings documentation
 @app.get("/doc/project-settings", response_class=HTMLResponse)
 async def project_settings():
@@ -21,6 +23,7 @@ async def project_settings():
                 <li>API Version: 1.0</li>
                 <li>Environment: Development</li>
             </ul>
+            <a href="http://20.199.24.227/doc/get-started">Get Started</a>
         </body>
     </html>
     """
@@ -44,6 +47,7 @@ async def get_started():
                 <li>Define routes using decorators: <code>@app.get("/")</code></li>
                 <li>Run the server: <code>uvicorn main:app --reload</code></li>
             </ol>
+            <a href="http://20.199.24.227/doc/project-settings">Project Settings</a>
         </body>
     </html>
     """
@@ -52,9 +56,9 @@ async def get_started():
 @app.get("/sitemap.xml")
 async def sitemap():
     urls = [
-        "http://20.199.24.227/doc/project-settings",
-        "http://20.199.24.227/doc/get-started",
-        "http://20.199.24.227/robots.txt"
+        f"{HOST}/doc/project-settings",
+        f"{HOST}/doc/get-started",
+        f"{HOST}/robots.txt"
     ]
     
     sitemap_xml = """<?xml version="1.0" encoding="UTF-8"?>
