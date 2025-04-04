@@ -1,9 +1,6 @@
 from fastapi import FastAPI, Response
 from fastapi.responses import HTMLResponse
-import streamlit as st
-import uvicorn
 from datetime import datetime
-import os
 
 app = FastAPI()
 
@@ -16,7 +13,7 @@ async def project_settings():
             <title>Project Settings Documentation</title>
         </head>
         <body>
-            <h1>Project Settings</h1>
+            <h1>Project Settings Documentation</h1>
             <p>This is a simple documentation page for project settings.</p>
             <h2>Configuration</h2>
             <ul>
@@ -34,7 +31,7 @@ async def get_started():
     return """
     <html>
         <head>
-            <title>Get Started with FastAPI</title>
+            <title>Getting Started with FastAPI</title>
         </head>
         <body>
             <h1>Getting Started with FastAPI</h1>
@@ -89,31 +86,3 @@ Disallow: /private/
 Sitemap: /sitemap.xml
 """
     return Response(content=robots_txt, media_type="text/plain")
-
-# Streamlit interface
-def main():
-    st.title("CursorAI Crawler Interface")
-    
-    st.sidebar.title("Navigation")
-    page = st.sidebar.radio("Go to", ["Home", "Documentation", "Sitemap", "Robots.txt"])
-    
-    if page == "Home":
-        st.header("Welcome to CursorAI Crawler")
-        st.write("This is a simple interface for managing the CursorAI crawler.")
-        
-    elif page == "Documentation":
-        st.header("Documentation")
-        st.write("Available documentation pages:")
-        st.markdown("- [Project Settings](/doc/project-settings)")
-        st.markdown("- [Get Started](/doc/get-started)")
-        
-    elif page == "Sitemap":
-        st.header("Sitemap")
-        st.write("View the sitemap at: [Sitemap XML](/sitemap.xml)")
-        
-    elif page == "Robots.txt":
-        st.header("Robots.txt")
-        st.write("View the robots.txt at: [Robots.txt](/robots.txt)")
-
-if __name__ == "__main__":
-    main()
