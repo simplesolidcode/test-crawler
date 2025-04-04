@@ -3,6 +3,7 @@ from fastapi.responses import HTMLResponse
 import streamlit as st
 import uvicorn
 from datetime import datetime
+import os
 
 app = FastAPI()
 
@@ -115,7 +116,12 @@ def main():
         st.write("View the robots.txt at: [Robots.txt](/robots.txt)")
 
 if __name__ == "__main__":
-    # Run FastAPI server
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+    # Check if we're running on Streamlit Cloud
+    if os.environ.get("STREAMLIT_SERVER_PORT"):
+        # Run only the Streamlit interface
+        main()
+    else:
+        # Run FastAPI server for local development
+        uvicorn.run(app, host="0.0.0.0", port=8000)
     # Run Streamlit interface
     # streamlit run app.py 
