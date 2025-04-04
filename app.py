@@ -52,9 +52,9 @@ async def get_started():
 @app.get("/sitemap.xml")
 async def sitemap():
     urls = [
-        "/doc/project-settings",
-        "/doc/get-started",
-        "/robots.txt"
+        "http://20.199.24.227/doc/project-settings",
+        "http://20.199.24.227/doc/get-started",
+        "http://20.199.24.227/robots.txt"
     ]
     
     sitemap_xml = """<?xml version="1.0" encoding="UTF-8"?>
